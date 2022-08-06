@@ -1,0 +1,17 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+h1,
+h2 {
+	text-align: center;
+}
+
+img {
+	height: 400px;
+	width: auto;
+	border-radius: 5%;
+}

@@ -1,0 +1,33 @@
+<app-redirect-home-button></app-redirect-home-button>
+
+<div class="container">
+	<p-card *ngIf=" requestStatus === 'success'; else errorMsg">
+		<h1>{{dogName | titlecase}}</h1>
+		<img src="{{imageURL}}" alt="Image of a dog">
+
+		<p-table *ngIf="subBreedNames.length > 0; else elseBlock" [value]="subBreedNames"
+			styleClass="p-datatable-striped" [scrollable]="true" scrollHeight="270px">
+			<ng-template pTemplate="header">
+				<tr>
+					<th>Sub-breed's Name</th>
+				</tr>
+			</ng-template>
+			<ng-template pTemplate="body" let-subBreed>
+				<tr>
+					<td>
+						<a [routerLink]="[subBreed]">{{subBreed | titlecase}}</a>
+					</td>
+				</tr>
+			</ng-template>
+		</p-table>
+
+		<ng-template #elseBlock>
+			<h2>This breed has no sub-breeds :(</h2>
+		</ng-template>
+	</p-card>
+	<ng-template #errorMsg>
+		<p-card>
+			<h2>There is no such breed!</h2>
+		</p-card>
+	</ng-template>
+</div>
